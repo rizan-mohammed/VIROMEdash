@@ -2,13 +2,14 @@
 # visit http://127.0.0.1:8050/ in your web browser.
 
 from operator import index
-from dash import Dash, Input, Output, html, dcc
+from dash import Dash, Input, Output, html, dcc, callback
 from dash.exceptions import PreventUpdate
 import dash
+from dash import ctx
 import dash_bootstrap_components as dbc  # apply a bootstrap template
 from dash_bootstrap_templates import load_figure_template
-from pages import geography, index, species, self_catalogue, baltimore, host, date
-
+from pages import geography, index, species, self_catalogue, baltimore, host
+from viromedash.pages import date
 # This loads the "cyborg" themed figure template from dash-bootstrap-templates library,
 # adds it to plotly.io and makes it the default figure template.
 load_figure_template("flatly")
@@ -45,6 +46,7 @@ def display_page(pathname):
     else:
         return index.layout
     # You could also return a 404 "URL not found" page here
+
 
 
 if __name__ == "__main__":
